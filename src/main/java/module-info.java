@@ -1,7 +1,8 @@
-module ru.vsu.cs.uvarov_d_p.cg_task2 {
+module ru.vsu.cs.uvarov_d_p.cg {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    requires javafx.swing;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -11,6 +12,6 @@ module ru.vsu.cs.uvarov_d_p.cg_task2 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp to javafx.fxml;
-    exports ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp;
+    opens ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp to javafx.fxml;
+    exports ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp;
 }

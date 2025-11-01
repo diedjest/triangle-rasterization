@@ -1,4 +1,4 @@
-package ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp;
+package ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class RasterizationApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RasterizationApplication.class.getResource("/ru/vsu/cs/uvarov_d_p/cg_task2/mainwindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RasterizationApplication.class.getResource("/ru/vsu/cs/uvarov_d_p/cg/mainwindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Rasterization App");
         stage.setScene(scene);

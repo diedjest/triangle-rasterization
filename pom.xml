@@ -124,7 +124,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp/ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp.RasterizationApplication</mainClass>
+              <mainClass>ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp/ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp.RasterizationApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
