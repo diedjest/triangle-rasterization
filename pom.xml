@@ -11,38 +11,61 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<junit.version>5.10.2</junit.version>  </properties>
+    <maven.compiler.source>25</maven.compiler.source>
+    <maven.compiler.target>25</maven.compiler.target>
+    <javafx.version>21.0.2</javafx.version>
+    <junit.version>5.10.2</junit.version>
+  </properties>
 
   <dependencies>
+    <!-- Основные модули JavaFX -->
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>17.0.6</version>
+      <version>${javafx.version}</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>17.0.6</version>
+      <version>${javafx.version}</version>
     </dependency>
-<dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-graphics</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-base</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+
+    <!-- Дополнительные модули JavaFX (если нужны) -->
+    <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-web</artifactId>
-      <version>17.0.6</version>
+      <version>${javafx.version}</version>
     </dependency>
-      <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-swing</artifactId>
-        <version>17.0.6</version>
-      </dependency>
-<dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-swing</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-media</artifactId>
-      <version>17.0.6</version>
-    </dependency><dependency>
+      <version>${javafx.version}</version>
+    </dependency>
+
+    <!-- ControlsFX -->
+    <dependency>
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
       <version>11.2.1</version>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- FormsFX -->
+    <dependency>
       <groupId>com.dlsc.formsfx</groupId>
       <artifactId>formsfx-core</artifactId>
       <version>11.6.0</version>
@@ -52,7 +75,10 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- ValidatorFX -->
+    <dependency>
       <groupId>net.synedra</groupId>
       <artifactId>validatorfx</artifactId>
       <version>0.5.0</version>
@@ -62,15 +88,24 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- Ikonli -->
+    <dependency>
       <groupId>org.kordamp.ikonli</groupId>
       <artifactId>ikonli-javafx</artifactId>
       <version>12.3.1</version>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- BootstrapFX -->
+    <dependency>
       <groupId>org.kordamp.bootstrapfx</groupId>
       <artifactId>bootstrapfx-core</artifactId>
       <version>0.4.0</version>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- TilesFX -->
+    <dependency>
       <groupId>eu.hansolo</groupId>
       <artifactId>tilesfx</artifactId>
       <version>21.0.3</version>
@@ -80,7 +115,10 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency><dependency>
+    </dependency>
+
+    <!-- FXGL -->
+    <dependency>
       <groupId>com.github.almasb</groupId>
       <artifactId>fxgl</artifactId>
       <version>17.3</version>
@@ -91,7 +129,9 @@
         </exclusion>
       </exclusions>
     </dependency>
-<dependency>
+
+    <!-- JUnit -->
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
@@ -102,10 +142,12 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
+      <!-- Компилятор -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -113,27 +155,34 @@
         <configuration>
           <source>25</source>
           <target>25</target>
+          <compilerArgs>
+            <arg>--enable-preview</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
+
+      <!-- JavaFX Maven Plugin -->
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
-        <executions>
-          <execution>
-            <!-- Default configuration for running with: mvn clean javafx:run -->
-            <id>default-cli</id>
-            <configuration>
-              <mainClass>ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp/ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp.RasterizationApplication</mainClass>
-              <launcher>app</launcher>
-              <jlinkZipName>app</jlinkZipName>
-              <jlinkImageName>app</jlinkImageName>
-              <noManPages>true</noManPages>
-              <stripDebug>true</stripDebug>
-              <noHeaderFiles>true</noHeaderFiles>
-            </configuration>
-          </execution>
-        </executions>
+        <configuration>
+          <!-- Исправленный mainClass -->
+          <mainClass>ru.vsu.cs.uvarov_d_p.cg_task2.rasterizationfxapp.RasterizationApplication</mainClass>
+          <options>
+            <option>--enable-preview</option>
+          </options>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Surefire Plugin для тестов -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <argLine>--enable-preview</argLine>
+        </configuration>
       </plugin>
     </plugins>
   </build>

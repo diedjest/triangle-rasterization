@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp.RasterizationController">
-    <Canvas fx:id="canvas" width="800" height="600" AnchorPane.topAnchor="30.0"/>
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.vsu.cs.uvarov_d_p.cg.rasterizationfxapp.RasterizationController">
+    <Canvas fx:id="canvas" height="700" width="1000" AnchorPane.topAnchor="50.0" />
+   <Button fx:id="fillTriangleButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Вставить треугольник" textAlignment="CENTER" />
+   <Button fx:id="deleteTriangleButton" layoutX="160.0" layoutY="14.0" mnemonicParsing="false" text="Удалить треугольник" textAlignment="CENTER" />
 </AnchorPane>
