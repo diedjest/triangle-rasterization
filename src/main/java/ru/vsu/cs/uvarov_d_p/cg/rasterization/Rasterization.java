@@ -21,7 +21,7 @@ public class Rasterization {
     }
 
     /**
-     * Отрисовка контура трегольника с интерполяцией по вершинам
+     * Отрисовка контура треугольника с интерполяцией по вершинам
      */
     public static void drawInterpolatedTriangle(
             GraphicsContext gc,
