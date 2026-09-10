@@ -1,61 +1,64 @@
-# Triangle Rasterization
+# Растеризация треугольников
 
-Interactive **JavaFX** demo that rasterizes triangles in software: no GPU fill, only pixels written by hand.
+Интерактивная **JavaFX**-демонстрация программной растеризации треугольников: без использования GPU, пиксели отрисовываются вручную.
 
-The app is a small computer-graphics study project. It shows how a triangle is drawn on a 2D canvas with **Bresenham’s line algorithm**, **scanline fill**, and **per-vertex color interpolation**.
+Это приложение — небольшой учебный проект по компьютерной графике. Оно показывает, как треугольник отрисовывается на 2D-холсте с помощью **алгоритма Брезенхема**, **построчной заливки (scanline)** и **интерполяции цвета по вершинам**.
 
-## Features
+## Возможности
 
-- Bresenham line drawing via `PixelWriter`
-- Gradient (interpolated) edges between vertex colors
-- Scanline fill of a triangle
-- Smooth RGB interpolation across the interior
-- Interactive editor: add, select, drag, reshape, recolor, and delete triangles
+* Отрисовка линий по алгоритму Брезенхема через `PixelWriter`
+* Градиентные (интерполированные) ребра между цветами вершин
+* Построчная заливка (scanline) треугольника
+* Плавная RGB-интерполяция внутри треугольника
+* Интерактивный редактор: добавление, выделение, перемещение, изменение формы, перекрашивание и удаление треугольников
 
-## How it works
+## Как это работает
 
-1. Vertices are sorted by Y.
-2. The triangle is split into an upper and a lower part at the middle vertex.
-3. For each scanline, the left and right X bounds are interpolated.
-4. Each pixel on the span gets a color interpolated from the endpoints (and those endpoints from the vertices).
+1. Вершины сортируются по координате Y.
+2. Треугольник разделяется на верхнюю и нижнюю части по средней вершине.
+3. Для каждой строки (scanline) интерполируются левая и правая границы по оси X.
+4. Каждый пиксель на отрезке получает цвет, интерполированный от крайних точек отрезка (а те, в свою очередь, от вершин).
 
-Edges use the same Bresenham stepper as solid lines; fill uses horizontal spans of that stepper.
+Для рёбер используется тот же алгоритм Брезенхема, что и для сплошных линий; заливка использует горизонтальные отрезки, вычисляемые этим же алгоритмом.
 
-## Controls
+## Управление
 
-| Action | How |
+| Действие | Как выполнить |
 | --- | --- |
-| Add a triangle | **Вставить треугольник** |
-| Select | Left-click inside a triangle |
-| Move | Drag the interior |
-| Reshape | Drag a vertex |
-| Recolor a vertex | Right-click the vertex, pick a color |
-| Delete | Select, then **Удалить треугольник** |
+| Добавить треугольник | **Вставить треугольник** |
+| Выделить | Левый клик внутри треугольника |
+| Переместить | Перетащить за внутреннюю часть |
+| Изменить форму | Перетащить вершину |
+| Перекрасить вершину | Правый клик по вершине, выбрать цвет |
+| Удалить | Выделить, затем **Удалить треугольник** |
 
-## Requirements
+## Требования
 
-- JDK **21** or newer
-- Maven **3.9+** (or the included Maven Wrapper)
+* JDK **21** или новее
+* Maven **3.9+** (или встроенный Maven Wrapper)
 
-## Run
+## Запуск
 
 ```bash
 ./mvnw javafx:run
+
 ```
 
-On Windows:
+На Windows:
 
 ```bat
 mvnw.cmd javafx:run
-```
-
-## Project layout
 
 ```
+
+## Структура проекта
+
+```text
 src/main/java/ru/vsu/cs/uvarov_d_p/cg/
-  rasterization/Rasterization.java      # algorithms
-  rasterizationfxapp/                   # JavaFX UI
-  util/Triangle.java                    # triangle model + hit test
+  rasterization/Rasterization.java      # алгоритмы
+  rasterizationfxapp/                   # UI на JavaFX
+  util/Triangle.java                    # модель треугольника + проверка попадания (hit test)
+
 ```
 
-Core drawing lives in `Rasterization`: `drawLine`, `drawLineInterpolated`, `fillTriangle`, `fillTriangleInterpolated`.
+Основная логика отрисовки находится в классе `Rasterization`: `drawLine`, `drawLineInterpolated`, `fillTriangle`, `fillTriangleInterpolated`.
